@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Additional Info</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            color: #fff; 
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        div {
+            width: 50%;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); 
+            border: 1px solid #fff;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        }
+
+        p {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.2em;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            background: #3498db;
+            color: #fff; 
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1em;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('client_dashboard') }}" class="back-button">Back to Dashboard</a>
+
+    <h1>View Additional Info</h1>
+
+    <div>
+        <p>Ticket ID: {{ ticket.id }}</p>
+        <p>{{ ticket.get_info() }}</p>
+        <p>Additional Info:</p><br>
+        {% for info in ticket.additional_info %}
+            <p>{{ info }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

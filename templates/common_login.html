@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: #fff;
+        }
+
+        h2 {
+            color: #ecf0f1;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #e74c3c, #e67e22); 
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.2em;
+            margin: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+            transition: background 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #c0392b, #d35400); 
+        }
+    </style>
+</head>
+<body>
+    <h2>Login</h2>
+
+    <button onclick="location.href='{{ url_for('admin_login') }}'">Admin Login</button>
+    <button onclick="location.href='{{ url_for('client_index') }}'">Client Login</button>
+    <button onclick="location.href='{{ url_for('engineer_index') }}'">Service Engineer Login</button>
+</body>
+</html>

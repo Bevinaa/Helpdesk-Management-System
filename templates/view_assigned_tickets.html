@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Assigned Tickets</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(90deg, #f5f5f5, #3498db); 
+            color: #333;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        strong {
+            color: #3498db;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db; 
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('engineer_dashboard') }}" class="back-button">Back to Dashboard</a>
+
+    <h1>Assigned Tickets</h1>
+
+    {% if assigned_tickets %}
+        <ul>
+            {% for ticket in assigned_tickets %}
+                <li>
+                    <strong>Ticket ID:</strong> {{ ticket.ticket_id }}<br>
+                    <strong>Status:</strong> {{ ticket.status }}<br>
+                    <strong>Assignment Date:</strong> {{ ticket.assignment_date }}<br>
+                    <form method="post" action="{{ url_for('close_ticket', ticket_id=ticket.ticket_id) }}">
+                        <input type="submit" value="Close Ticket">
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No assigned tickets.</p>
+    {% endif %}
+</body>
+</html>
